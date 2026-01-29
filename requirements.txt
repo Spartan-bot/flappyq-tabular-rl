@@ -1,0 +1,14 @@
+# Core deps for the tabular Q-learning project
+# Tested with Python 3.12 on macOS.
+numpy==1.26.4
+matplotlib>=3.8,<3.10
+pygame>=2.5
+tqdm>=4.66
+
+# PLE isn't reliably published on PyPI; install from source:
+# Option A (recommended):
+#   git clone https://github.com/ntasfi/PyGame-Learning-Environment ple-src
+#   pip install -e ple-src
+#
+# Option B (pip via git):
+#   pip install "PyGame-Learning-Environment @ git+https://github.com/ntasfi/PyGame-Learning-Environment.git"

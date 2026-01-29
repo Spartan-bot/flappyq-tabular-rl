@@ -1,0 +1,12 @@
+# Virtual environments
+.venv/
+
+# Third-party deps installed from source
+ple-src/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS junk
+.DS_Store
