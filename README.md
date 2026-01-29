@@ -80,7 +80,7 @@ Close the window or press `Esc` to quit.
 
 - **State discretisation**: turning continuous Flappy Bird state into integer bins.
 - **Tabular Q-learning**: the update rule
-  ```text
+
 Q(s,a) ← Q(s,a) + α · ( r + γ · max_a' Q(s',a') − Q(s,a) )
 
 - **Exploration vs exploitation** with ε-greedy.

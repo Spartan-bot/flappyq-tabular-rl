@@ -59,7 +59,7 @@ Regehr & Ayoub (2021), “An Elementary Proof that Q-learning Converges Almost S
 
 In `agent_simple.py` I implement the standard update:
 
-```text
+
 Q_{t+1}(s,a) = Q_t(s,a)
                + α_t(s,a) · ( r_t
                + γ · max_a' Q_t(s',a')
@@ -78,7 +78,7 @@ That’s why the Q-table is a fixed-size tensor.
 
 The learning rate is per-(state, action):
 
-```text
+
 α_t(s,a) = 1 / ( 1 + N_t(s,a) )
 
 
@@ -86,7 +86,7 @@ where `N_t(s,a)` is how many times we updated that entry (stored in `visit.npy`)
 
 This schedule satisfies the Robbins–Monro conditions used in convergence proofs:
 
-```text
+
 Σ_t α_t(s,a)   = ∞
 Σ_t α_t(s,a)^2 < ∞
 
