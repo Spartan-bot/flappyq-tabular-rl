@@ -59,37 +59,40 @@ Regehr & Ayoub (2021), “An Elementary Proof that Q-learning Converges Almost S
 
 In `agent_simple.py` I implement the standard update:
 
-
-Q_{t+1}(s,a) = Q_t(s,a)
-               + α_t(s,a) · ( r_t
-               + γ · max_a' Q_t(s',a')
-               − Q_t(s,a) )
-
-
-
+$$
+Q_{t+1}(s,a)
+= Q_t(s,a)
++ \alpha_t(s,a)
+\bigl(
+r_t + \gamma \max_{a'} Q_t(s',a') - Q_t(s,a)
+\bigr)
+$$
 
 ### 3.2 Why I discretise (finite MDP)
 
 Regehr & Ayoub’s proof (and classical proofs) assume a **finite** state and action space.
-Flappy Bird is continuous, so I discretise `(x, y, v)` into bins to create a finite MDP.
+Flappy Bird is continuous, so I discretise $(x, y, v)$ into bins to create a finite MDP.
 That’s why the Q-table is a fixed-size tensor.
 
 ### 3.3 Robbins–Monro step sizes (learning-rate schedule)
 
 The learning rate is per-(state, action):
 
+$$
+\alpha_t(s,a) = \frac{1}{1 + N_t(s,a)}
+$$
 
-α_t(s,a) = 1 / ( 1 + N_t(s,a) )
-
-
-where `N_t(s,a)` is how many times we updated that entry (stored in `visit.npy`).
+where $N_t(s,a)$ is how many times we updated that entry (stored in `visit.npy`).
 
 This schedule satisfies the Robbins–Monro conditions used in convergence proofs:
 
+$$
+\sum_t \alpha_t(s,a) = \infty
+$$
 
-Σ_t α_t(s,a)   = ∞
-Σ_t α_t(s,a)^2 < ∞
-
+$$
+\sum_t \alpha_t(s,a)^2 < \infty
+$$
 
 Intuition: early updates are big (fast learning), later updates shrink (stability).
 
@@ -107,7 +110,7 @@ I approximate this with ε-greedy exploration during training (and greedy evalua
 ### 3.6 What “converges” means here
 
 In theory (under standard assumptions), tabular Q-learning converges **almost surely**
-to the optimal action-value function Q*. In practice, we cannot run forever and the
+to the optimal action-value function $Q^*$. In practice, we cannot run forever and the
 discretisation introduces approximation error, so what I observe is:
 
 - Q-values stabilising (updates shrink as visits increase)
@@ -120,7 +123,7 @@ discretisation introduces approximation error, so what I observe is:
 
 - This is **not deep RL**: it does not generalise beyond the bins we define.
 - The choice of discretisation (bin sizes) is a major driver of performance.
-- With γ = 1 (no discounting of future rewards), learning can be noisier; dense reward shaping helps.
+- With $\gamma = 1$ (no discounting of future rewards), learning can be noisier; dense reward shaping helps.
 - Even a “good” policy can have very different outcomes across episodes due to randomness.
 
 ---
