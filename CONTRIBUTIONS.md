@@ -59,13 +59,11 @@ Regehr & Ayoub (2021), “An Elementary Proof that Q-learning Converges Almost S
 
 In `agent_simple.py` I implement the standard update:
 
+
 $$
-Q_{t+1}(s,a)
-= Q_t(s,a)
-+ \alpha_t(s,a)
-\bigl(
-r_t + \gamma \max_{a'} Q_t(s',a') - Q_t(s,a)
-\bigr)
+Q \leftarrow Q + \alpha \,(\text{target} - Q)
+\qquad\text{where}\qquad
+\text{target} = r + \gamma\max_{a'}Q(s',a').
 $$
 
 ### 3.2 Why I discretise (finite MDP)
@@ -90,8 +88,10 @@ $$
 \sum_t \alpha_t(s,a) = \infty
 $$
 
+and
+
 $$
-\sum_t \alpha_t(s,a)^2 < \infty
+\sum_t \alpha_t(s,a)^2 < \infty.
 $$
 
 Intuition: early updates are big (fast learning), later updates shrink (stability).
