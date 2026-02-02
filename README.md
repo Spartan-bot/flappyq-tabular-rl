@@ -68,6 +68,22 @@ python plot.py --dir results/<your-run-folder>
 
 This writes `learning_curve.png` and `visit_heatmap.png` into that run folder.
 
+## Results (one representative run)
+
+**Training run:** 40,000 episodes  
+**Smoothed performance (last 100 episodes):**
+- frames (100-ep mean): ~439  
+- pipes (100-ep mean): ~10.1  
+**Best episode:**
+- frames max: 3299  
+- pipes max: 86  
+
+### Learning curve
+![Learning curve](results/run-20260107-114854/learning_curve.png)
+
+### State visitation heatmap (x vs y bins)
+![State visit heatmap](results/run-20260107-114854/visit_heatmap.png)
+
 ---
 
 ## 4) Watch the trained agent
@@ -83,7 +99,10 @@ Close the window or press `Esc` to quit.
 ## 5) What can someone learn from this project
 
 - **State discretisation**: turning continuous Flappy Bird state into integer bins.
-- **Tabular Q-learning**: the update rule.
+- **Tabular Q-learning**: the update rule
+  ```text
+Q(s,a) ← Q(s,a) + α · ( r + γ · max_a' Q(s',a') − Q(s,a) )
+
 - **Exploration vs exploitation** with ε-greedy.
 - **Reward shaping** to make learning dense and stable.
 - Reading learning curves & visit heat-maps.
