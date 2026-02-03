@@ -84,6 +84,12 @@ This writes `learning_curve.png` and `visit_heatmap.png` into that run folder.
 ### State visitation heatmap (x vs y bins)
 ![State visit heatmap](results/run-20260107-114854/visit_heatmap.png)
 
+## Demo (trained agent)
+
+![Trained Flappy Bird agent](results/run-20260107-114854/agent.gif)
+
+*Representative greedy policy rollout after ~40k training episodes.*
+
 ---
 
 ## 4) Watch the trained agent
